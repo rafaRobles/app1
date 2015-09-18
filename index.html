@@ -1,0 +1,90 @@
+<html>
+    <head>
+       <title> HTML </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="estilos.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+        
+        <!-- <script src="funciones.js"></script> -->
+    
+    </head>
+
+    <body>
+    
+        <h1>Registro</h1>
+        
+        <input type="text" placeholder="Nombre de Usuario" id="usuario">
+        <input type="email" placeholder="Correo" id="email">
+        <input type="password" placeholder="Contraseña" id="password">
+        <input type="password" placeholder="Confirmar Contraseña" id="password2">
+        
+        <p id="mensaje">Texto de Relleno</p>
+    
+        <button onclick="verificar()">Registrame</button>
+        
+        <div>
+        <p>O Puedes Iniciar Sesion</p>
+        </div>
+    
+    </body>
+    
+    <script>
+        
+    function verificar()
+        {
+        pass1=document.getElementById("password").value;
+        pass2=document.getElementById("password2").value;
+            
+            if (pass1 == pass2)
+            {
+                //alert("registrado");
+
+                user = document.getElementById('usuario').value;
+                email = document.getElementById('email').value;
+                
+                //guardar localmente
+                //setItem(llave,valor);
+                localStorage.setItem('usuario',user);
+                localStorage.setItem('password',pass1);
+                localStorage.setItem('email',email);
+                
+                //mostrar mensaje
+                mensaje = document.getElementById('mensaje');
+                mensaje.style.opacity = "1";
+                mensaje.style.transition = ".6s all";
+                mensaje.innerHTML = "Usuario Registrado XDDDDD";
+                
+                
+                //redirigir
+                //setTimeout(funcion , retraso)
+                setTimeout(
+                    function()
+                           {
+                                window.location.assign('login.html')
+                           },
+                    3000);
+                
+                
+            }
+            else
+            {
+                document.getElementById('password').style.border="5px solid red";
+                document.getElementById('password2').style.border="5px solid red";
+                document.getElementById('mensaje').innerHTML = "Revisa tu contraseña";
+                
+                mensaje.document.getElementById('mensaje');
+                mensaje.style.opacity = "1";
+                mensaje.style.transition=".6s all";
+                mensaje.innerHTML = "Las contraseñas no coinciden";
+                
+
+            }
+        
+            
+        }
+    
+    
+    </script>
+
+</html>
